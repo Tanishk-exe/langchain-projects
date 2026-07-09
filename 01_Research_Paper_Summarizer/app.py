@@ -2,8 +2,15 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate, load_prompt
 import streamlit as st
 from dotenv import load_dotenv
+import os
+
 
 load_dotenv()
+
+api_key = os.getenv("GOOGLE_API_KEY")
+
+if api_key is None:
+    api_key = st.secrets["GOOGLE_API_KEY"]
 
 model=ChatGoogleGenerativeAI(model='gemini-2.5-flash')
 
