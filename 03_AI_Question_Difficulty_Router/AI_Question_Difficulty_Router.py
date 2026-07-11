@@ -12,6 +12,11 @@ st.caption("An AI-powered question router built with LangChain that classifies q
 
 load_dotenv()
 
+api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+if api_key is None:
+    api_key = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+
 llm=HuggingFaceEndpoint(
     model="openai/gpt-oss-20b:groq"
 )
